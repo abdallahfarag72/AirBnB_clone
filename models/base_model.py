@@ -15,8 +15,9 @@ class BaseModel:
         """ constructor initalize with id, create/update time
         """
         self.id = str(uuid.uuid4())
-        self.created_at = datetime.now()
-        self.updated_at = datetime.now()
+        curtime = datetime.now()
+        self.created_at = curtime
+        self.updated_at = curtime
 
     def __str__(self):
         """ str representation of object instance
