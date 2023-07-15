@@ -6,11 +6,13 @@ which  defines all common attributes/methods for other classes
 from datetime import datetime
 import uuid
 
+
 class BaseModel:
     """
     BaseModel that defines all common attributes/methods for other classes
     and handles serialization, deserialization
     """
+
     def __init__(self):
         """ constructor initalize with id, create/update time
         """
@@ -28,13 +30,13 @@ class BaseModel:
         """ turn object into dictionary
         """
         dic = self.__dict__
-        result_dic = {'__class__' : self.__class__.__name__}
+        result_dic = {'__class__': self.__class__.__name__}
         for key, val in dic.items():
             result_dic[key] = val
         result_dic['created_at'] = result_dic['created_at'].isoformat()
         result_dic['updated_at'] = result_dic['updated_at'].isoformat()
         return result_dic
-    
+
     def save(self):
         """save the object instance
         """
