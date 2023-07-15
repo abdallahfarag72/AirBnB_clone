@@ -13,13 +13,20 @@ class BaseModel:
     and handles serialization, deserialization
     """
 
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
         """ constructor initalize with id, create/update time
         """
-        self.id = str(uuid.uuid4())
-        curtime = datetime.now()
-        self.created_at = curtime
-        self.updated_at = curtime
+        if len(kwargs) > 0:
+            for key, val in kwargs.items():
+                if key == 'created_at' or key == 'updated_at':
+                    setattr(self, key, datetime.fromisoformat(val))
+                elif key != '__class__':
+                    setattr(self, key, val)
+        else:
+            self.id = str(uuid.uuid4())
+            curtime = datetime.now()
+            self.created_at = curtime
+            self.updated_at = curtime
 
     def __str__(self):
         """ str representation of object instance
