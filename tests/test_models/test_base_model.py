@@ -19,4 +19,6 @@ class TestBaseModel(unittest.TestCase):
         self.assertTrue(x.created_at < y.created_at)
         self.assertEqual(x.created_at, x.updated_at)
         self.assertTrue(x.updated_at < y.updated_at)
-
+    
+    def test_to_dictionar(self):
+        pass
