@@ -22,7 +22,7 @@ class BaseModel:
     def __str__(self):
         """ str representation of object instance
         """
-        return f"{self.__name__} ({self.id}) {self.__dict__()}"
+        return f"[{self.__name__}] ({self.id}) {self.__dict__()}"
 
     def to_dict(self):
         """ turn object into dictionary
