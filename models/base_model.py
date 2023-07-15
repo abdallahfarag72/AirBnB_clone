@@ -36,4 +36,6 @@ class BaseModel:
         return result_dic
     
     def save(self):
+        """save the object instance
+        """
         self.updated_at = datetime.now()
