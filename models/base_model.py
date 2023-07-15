@@ -4,7 +4,6 @@ base_model module, it has class BaseModel
 which  defines all common attributes/methods for other classes
 """
 from datetime import datetime
-from models import storage
 import uuid
 
 
@@ -24,6 +23,7 @@ class BaseModel:
                 elif key != '__class__':
                     setattr(self, key, val)
         else:
+            from models import storage
             self.id = str(uuid.uuid4())
             curtime = datetime.now()
             self.created_at = curtime
@@ -49,5 +49,6 @@ class BaseModel:
     def save(self):
         """save the object instance
         """
+        from models import storage
         self.updated_at = datetime.now()
         storage.save()
