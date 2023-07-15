@@ -13,7 +13,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_EOF(self, arg):
         """Implements EOF functionality"""
-        print("")
+        # print("")
         return True
 
     def do_help(self, arg):
