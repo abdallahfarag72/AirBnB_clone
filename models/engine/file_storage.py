@@ -2,17 +2,19 @@
 """Defines the FileStorage class"""
 import json
 import os
-from models.amenity import Amenity
 from models.base_model import BaseModel
-from models.city import City
-from models.state import State
-from models.place import Place
-from models.review import Review
-from models.user import User
+# from models.amenity import Amenity
+# from models.city import City
+# from models.state import State
+# from models.place import Place
+# from models.review import Review
+# from models.user import User
 
-all_classes = {'BaseModel': BaseModel, 'User': User,
-               'Amenity': Amenity, 'City': City, 'State': State,
-               'Place': Place, 'Review': Review}
+#all_classes = {'BaseModel': BaseModel, 'User': User,
+#              'Amenity': Amenity, 'City': City, 'State': State,
+#               'Place': Place, 'Review': Review}
+
+all_classes = {'BaseModel': BaseModel}
 
 
 class FileStorage():
@@ -30,7 +32,7 @@ class FileStorage():
 
     def new(self, obj):
         """sets in __objects the obj with key <obj class name>.id"""
-        obj_key = "{}{}".format(obj.__class__.__name__, obj.id)
+        obj_key = "{}.{}".format(obj.__class__.__name__, obj.id)
         FileStorage.__objects[obj_key] = obj
 
     def save(self):

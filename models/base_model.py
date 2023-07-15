@@ -4,6 +4,7 @@ base_model module, it has class BaseModel
 which  defines all common attributes/methods for other classes
 """
 from datetime import datetime
+from models import storage
 import uuid
 
 
@@ -16,7 +17,7 @@ class BaseModel:
     def __init__(self, *args, **kwargs):
         """ constructor initalize with id, create/update time
         """
-        if len(kwargs) > 0:
+        if kwargs:
             for key, val in kwargs.items():
                 if key == 'created_at' or key == 'updated_at':
                     setattr(self, key, datetime.fromisoformat(val))
@@ -27,6 +28,7 @@ class BaseModel:
             curtime = datetime.now()
             self.created_at = curtime
             self.updated_at = curtime
+            storage.new(self)
 
     def __str__(self):
         """ str representation of object instance
@@ -48,3 +50,4 @@ class BaseModel:
         """save the object instance
         """
         self.updated_at = datetime.now()
+        storage.save()
