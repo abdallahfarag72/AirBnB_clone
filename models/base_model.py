@@ -35,3 +35,5 @@ class BaseModel:
         result_dic['updated_at'] = result_dic['updated_at'].isoformat()
         return result_dic
     
+    def save(self):
+        self.updated_at = datetime.now()
