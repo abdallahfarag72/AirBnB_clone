@@ -28,7 +28,7 @@ class BaseModel:
         """ turn object into dictionary
         """
         dic = self.__dict__
-        result_dic = {'__class__' : self.__name__}
+        result_dic = {'__class__' : self.__class__.__name__}
         for key, val in dic.items():
             result_dic[key] = val
         result_dic['created_at'] = result_dic['created_at'].isoformat()
