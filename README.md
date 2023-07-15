@@ -47,7 +47,7 @@ To use the AirBnB clone console, follow the instructions below:
 Here's an example of how you can use the AirBnB clone console:
 
 ```bash
-$ python console.py
+$ ./console.py
 (hbnb) help
 
 Documented commands (type help <topic>):
