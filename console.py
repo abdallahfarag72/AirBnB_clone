@@ -4,8 +4,17 @@ import cmd
 
 from models.base_model import BaseModel
 from models import storage
+from models.base_model import BaseModel
+from models.user import User
+from models.city import City
+from models.state import State
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
 
-all_classes = {'BaseModel': BaseModel}
+all_classes = {'BaseModel': BaseModel, 'User': User,
+               'Amenity': Amenity, 'City': City, 'State': State,
+               'Place': Place, 'Review': Review}
 
 
 class HBNBCommand(cmd.Cmd):
@@ -39,11 +48,11 @@ class HBNBCommand(cmd.Cmd):
             obj = all_classes[arg]()
             obj.save()
             print(obj.id)
-    
+
     def do_show(self, arg):
         """Show object info given its class and id
         """
-        if arg is None: 
+        if arg is None:
             arg = ""
         lst = arg.strip().split()
         if len(lst) == 0:
@@ -56,7 +65,7 @@ class HBNBCommand(cmd.Cmd):
             print("** no instance found **")
         else:
             print(storage.all()[f"{lst[0]}.{lst[1]}"])
-    
+
     def do_destroy(self, arg):
         if arg is None:
             arg = ""
@@ -66,13 +75,13 @@ class HBNBCommand(cmd.Cmd):
         elif lst[0] not in all_classes.keys():
             print("** class doesn't exist **")
         elif len(lst) == 1:
-             print("** instance id missing **")
+            print("** instance id missing **")
         elif f"{lst[0]}.{lst[1]}" not in storage.all():
             print("** no instance found **")
         else:
             del storage.all()[f"{lst[0]}.{lst[1]}"]
             storage.save()
-    
+
     def do_all(self, arg):
         if arg is None:
             arg = ""
@@ -84,7 +93,7 @@ class HBNBCommand(cmd.Cmd):
             if arg == "" or arg == key.split('.')[0]:
                 lst.append(str(obj))
         print(lst)
-    
+
     def do_update(self, arg):
         if arg is None:
             arg = ""
@@ -112,6 +121,7 @@ class HBNBCommand(cmd.Cmd):
             att_type = type(getattr(cur_obj, att_name))
             setattr(cur_obj, att_name, att_type(att_val))
             storage.save()
+
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
