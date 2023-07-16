@@ -4,6 +4,7 @@
 import unittest
 from models.review import Review
 
+
 class TestReview(unittest.TestCase):
     def test_review(self):
         review = Review()
