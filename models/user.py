@@ -9,6 +9,6 @@ class User(BaseModel):
     Defines a user and inherits from BaseModel
     """
     email = ""
-    paswword = ""
+    password = ""
     first_name = ""
     last_name = ""
