@@ -10,7 +10,7 @@ from models.base_model import BaseModel
 # from models.review import Review
 # from models.user import User
 
-#all_classes = {'BaseModel': BaseModel, 'User': User,
+# all_classes = {'BaseModel': BaseModel, 'User': User,
 #              'Amenity': Amenity, 'City': City, 'State': State,
 #               'Place': Place, 'Review': Review}
 
