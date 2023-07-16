@@ -14,6 +14,7 @@ all_classes = {'BaseModel': BaseModel, 'User': User,
                'Amenity': Amenity, 'City': City, 'State': State,
                'Place': Place, 'Review': Review}
 
+
 class FileStorage():
     """
     Works as a storage engine.
